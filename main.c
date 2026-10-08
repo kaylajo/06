@@ -1,15 +1,37 @@
 #include <stdio.h>
 
-int square(int a)
+int factorial(int n)
 {
-    return (a * a);
+    int i;
+    int res = 1;
+
+    for (i = 1; i <= n; i++)
+    res = res * i;
+
+    return res;
 }
 
-int main()
+int combination(int n, int r)
 {
-    int a = 2;
-    a = square(a);
-    printf("a=%i\n", a);
+    int up, down;
+    up= factorial(n);
+    down= factorial(r) * factorial(n - r);
+
+    return(up/down);
+}
+int main(void)
+{
+    int n, r;
+    int result;
+
+    printf("input n : ");
+    scanf("%d", &n);
+    printf("input r : ");
+    scanf("%d", &r);
+
+    result = combination(n, r);
+
+    printf("C(%d, %d) = %d\n", n, r, result);
 
     return 0;
 }
